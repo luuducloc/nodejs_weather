@@ -1,0 +1,23 @@
+<form method="post">
+    <div class="mb-3">
+        <label for="roleName" class="form-label" >Role name</label>
+        <input type="text" class="form-control" id="roleName" name="name">
+    </div>
+
+    <hr>
+    <div>
+        <h3>Select permission</h3>
+        {{#each permissions}}
+            <div class="form-check">
+                <input class="form-check-input" name="permission" type="checkbox" value="{{this._id}}" id="{{this.name}}">
+                <label class="form-check-label" for="{{this.name}}">
+                    {{this.name}}
+                </label>
+            </div>
+        {{/each}}
+
+
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
