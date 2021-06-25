@@ -16,7 +16,10 @@ app.use(morgan('combined'));
 app.use(cookieParser('sadfasdfasdfasdferqwadsgadfsa'));
 // Template engine
 app.engine('hbs', handlebars({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        sum: (a, b) => a + b,
+    }
 }));
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'resources/views'))

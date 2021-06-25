@@ -24,14 +24,14 @@
         <tbody>
         {{#each users}}
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{sum @index 1}}</th>
             <td>{{this.first_name}}</td>
             <td>{{this.last_name}}</td>
             <td>{{this.email}}</td>
             <td>
                 <a class="btn btn-primary" href="#" role="button" style="margin-right: 10px">Update</a>
                 <a class="btn btn-primary" href="#" role="button" style="margin-right: 10px">Delete</a>
-                <a class="btn btn-primary" href="#" role="button">Add Role</a>
+                <a class="btn btn-primary" href="/user/{{this._id}}/add-role" role="button">Add Role</a>
             </td>
         </tr>
         {{/each}}

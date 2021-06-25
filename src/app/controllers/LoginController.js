@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const getAllUser = require('../controllers/GetUserController');
 const md5 = require('md5');
 class LoginController {
     index(req, res) {

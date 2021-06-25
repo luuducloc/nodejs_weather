@@ -5,19 +5,17 @@ const User = require('../models/User');
 const Permission = require('../models/Permission1');
 const Permission_role = require('../models/Permission_role');
 class RoleController {
-    index(req, res) {
-        Permission.find({}, )
-        res.render('list_roles');
-    }
 
-    // create_new_role(req, res, next) {
-    //     const role = new Role(req.body);
-    //     role.created_by = mongosee.Types.ObjectId(req.signedCookies.user_id);
-    //     role.user_id = mongosee.Types.ObjectId(req.signedCookies.user_id);
-    //     console.log(role);
-    //     role.save();
-    //     res.redirect('/role');
-    // }
+    async index(req, res) {
+        let role_list = [];
+        await Role.find({}, (err, roles) => {
+            role_list = roles.map(role => role.toObject())
+        })
+        await User.find({}, (err, users) => {
+            users = users.map(user => user.toObject());
+            res.render('list_roles', { users: users, role_list: role_list });
+        })
+    }
 
     async create_index_role(req, res, next) {
         let permission_list = [];
@@ -28,7 +26,6 @@ class RoleController {
                 console.log('Error permission load');
             }
         });
-        console.log(permission_list);
         res.render('create_role', {permissions: permission_list});
 
     }
@@ -40,10 +37,7 @@ class RoleController {
 
         permission_role.role_id = role._id;
         permission_role.permission_id = req.body.permission;
-        console.log(permission_role);
         permission_role.save();
-        console.log(role._id);
-        console.log(req.body);
 
     }
 }

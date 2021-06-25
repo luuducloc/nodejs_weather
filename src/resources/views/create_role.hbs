@@ -1,19 +1,85 @@
 <form method="post">
+    <style>
+
+        /*table, th, td {*/
+        /*    border: 1px solid black;*/
+        /*    border-collapse: collapse;*/
+        /*}*/
+        th, td {
+            padding: 5px;
+            text-align: left;
+            width: 50px;
+        }
+    </style>
     <div class="mb-3">
-        <label for="roleName" class="form-label" >Role name</label>
+        <label for="roleName" class="form-label">Role name</label>
         <input type="text" class="form-control" id="roleName" name="name">
     </div>
 
     <hr>
     <div>
         <h3>Select permission</h3>
+
         {{#each permissions}}
-            <div class="form-check">
-                <input class="form-check-input" name="permission" type="checkbox" value="{{this._id}}" id="{{this.name}}">
-                <label class="form-check-label" for="{{this.name}}">
-                    {{this.name}}
-                </label>
-            </div>
+            <table style="width:100%">
+                <tr>
+                    <td rowspan="5"><h4>{{this.name}}</h4></td>
+                    <td rowspan="5">
+                        <div class="form-check">
+                            <input class="form-check-input" name="permission" type="checkbox" value="{{this._id}}"
+                                   id="select all">
+                            <label class="form-check-label">
+                                Chọn tất cả
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" name="permission" type="checkbox" value=""
+                                   id="select all">
+                            <label class="form-check-label">
+                                Xem {{this.name}}
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" name="permission" type="checkbox" value=""
+                                   id="select all">
+                            <label class="form-check-label">
+                                Thêm {{this.name}}
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" name="permission" type="checkbox" value=""
+                                   id="select all">
+                            <label class="form-check-label">
+                                Sửa {{this.name}}
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" name="permission" type="checkbox" value=""
+                                   id="select all">
+                            <label class="form-check-label">
+                                Xoá {{this.name}}
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <hr>
         {{/each}}
 
 
